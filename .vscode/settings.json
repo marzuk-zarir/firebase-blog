@@ -1,0 +1,35 @@
+{
+    // editor
+    "workbench.colorTheme": "Dracula",
+    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.fontSize": 18,
+
+    // formater
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[javascriptreact]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": null
+    },
+    "[javascript]": {
+        "editor.formatOnSave": false,
+        "editor.maxTokenizationLineLength": 2500,
+        "editor.defaultFormatter": null
+    },
+
+    // linter
+    "javascript.validate.enable": false,
+    "eslint.alwaysShowStatus": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+    },
+
+    // emmet
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
+
+    // others
+}
