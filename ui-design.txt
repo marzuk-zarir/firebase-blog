@@ -1,0 +1,17 @@
+Common:
+    Accent -> indigo-500
+
+Light Theme:
+    Background -> primary-100
+    Headings -> primary-500
+    Texts -> primary-400
+
+Dark Theme:
+    Background -> primary-500
+    Headings -> primary-200
+    Texts -> primary-300
+
+Extras:
+    MenuLink Background -> #4a4a4d
+    bg-neutral-700
+    bg-neutral-800

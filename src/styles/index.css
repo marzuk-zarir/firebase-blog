@@ -6,6 +6,12 @@ input:focus {
 
 input[type='submit'],
 button,
-i {
+i,
+svg {
     user-select: none;
+}
+
+input[type='submit'],
+button {
+    cursor: pointer;
 }
