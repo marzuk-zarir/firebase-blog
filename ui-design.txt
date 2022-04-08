@@ -15,3 +15,10 @@ Extras:
     MenuLink Background -> #4a4a4d
     bg-neutral-700
     bg-neutral-800
+
+Todo:
+    Refactor:
+        - ClassName simplify (classname package)
+        - JSX if-else (jsx-control-statements)
+    Bug:
+        - Switching theme color transition delay in navbar

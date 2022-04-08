@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import scrollbarPLugin from '@windicss/plugin-scrollbar'
 import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
@@ -8,6 +9,9 @@ function range(size, startAt = 1) {
 
 export default defineConfig({
     darkMode: 'class',
+    variants: {
+        scrollbar: ['rounded']
+    },
     theme: {
         extend: {
             fontFamily: {
@@ -35,5 +39,6 @@ export default defineConfig({
                     .join(' ')
             )
             .join(' ')
-    ]
+    ],
+    plugins: [scrollbarPLugin]
 })

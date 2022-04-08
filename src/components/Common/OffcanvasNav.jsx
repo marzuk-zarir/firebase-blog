@@ -1,19 +1,26 @@
-import { useState } from 'react'
-import MenuLink from './MenuLink'
-import NavItem from './NavItem'
+import { useEffect, useState } from 'react'
+import { useOffcanvasNav } from '../../contexts/OffcanvasNavProvider'
+import MenuLink from './Header/MenuLink'
+import NavItem from './Header/NavItem'
 
-export default function OffcanvasNav({ isNavOpen, setIsNavOpen }) {
+export default function OffcanvasNav() {
+    const { isNavOpen, toggleNav } = useOffcanvasNav()
+
     // @todo fake authorization
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth] = useState(false)
 
-    const handleHide = () => {
-        setIsNavOpen(false)
-    }
+    useEffect(() => {
+        if (isNavOpen) {
+            document.body.classList.add('overflow-hidden')
+        } else {
+            document.body.classList.remove('overflow-hidden')
+        }
+    }, [isNavOpen])
 
     return (
-        <>
+        <aside>
             <div
-                className={`absolute top-0 left-0 h-full w-64 sm:w-80 md:w-96 p-4 z-50 bg-primary-200 shadow-primary-400 transition-transform duration-300 transform dark:(bg-dark-600 shadow-primary-500) ${
+                className={`fixed top-0 left-0 h-full w-64 sm:w-80 md:w-96 p-4 z-50 bg-primary-200 shadow-primary-400 transition-transform duration-300 transform dark:(bg-dark-600 shadow-primary-500) ${
                     isNavOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full shadow-none'
                 }`}
             >
@@ -39,11 +46,11 @@ export default function OffcanvasNav({ isNavOpen, setIsNavOpen }) {
                                 General
                             </p>
                         </li>
-                        <NavItem href="#">Home</NavItem>
-                        <NavItem href="#">Articles</NavItem>
-                        <NavItem href="#">Categories</NavItem>
-                        <NavItem href="#">About</NavItem>
-                        <NavItem href="#">Contacts</NavItem>
+                        <NavItem to="#">Home</NavItem>
+                        <NavItem to="#">Articles</NavItem>
+                        <NavItem to="#">Categories</NavItem>
+                        <NavItem to="#">About</NavItem>
+                        <NavItem to="#">Contacts</NavItem>
                     </ul>
                     {isAuth ? (
                         <>
@@ -53,10 +60,10 @@ export default function OffcanvasNav({ isNavOpen, setIsNavOpen }) {
                                         Admin
                                     </p>
                                 </li>
-                                <NavItem href="#">Dashboard</NavItem>
-                                <NavItem href="#">Profile</NavItem>
-                                <NavItem href="#">Settings</NavItem>
-                                <NavItem href="#">Help</NavItem>
+                                <NavItem to="#">Dashboard</NavItem>
+                                <NavItem to="#">Profile</NavItem>
+                                <NavItem to="#">Settings</NavItem>
+                                <NavItem to="#">Help</NavItem>
                             </ul>
                             <a
                                 href="/#"
@@ -85,11 +92,11 @@ export default function OffcanvasNav({ isNavOpen, setIsNavOpen }) {
             </div>
             {isNavOpen && (
                 <div
-                    className="bg-clip-padding h-full bg-primary-500/60 w-full inset-0 transition-colors z-40 duration-500 absolute backdrop-filter backdrop-blur-sm dark:bg-neutral-700/40"
-                    onClick={handleHide}
+                    className="bg-clip-padding h-full bg-primary-500/60 w-full inset-0 transition-colors z-40 duration-500 fixed backdrop-filter backdrop-blur-sm dark:bg-neutral-700/40"
+                    onClick={toggleNav}
                     aria-hidden="true"
                 />
             )}
-        </>
+        </aside>
     )
 }

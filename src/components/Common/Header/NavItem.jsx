@@ -1,18 +1,14 @@
-import mergeProps from 'react-merge-props'
+import { Link } from 'react-router-dom'
 
 export default function NavItem({ children, ...props }) {
     return (
         <li className="font-medium text-lg transition-colors hover:text-indigo-500">
-            <a
-                {...mergeProps(
-                    {
-                        className: 'pb-1 transition-border hover:(border-b-2 border-indigo-500)'
-                    },
-                    props
-                )}
+            <Link
+                className="pb-1 transition-border hover:(border-b-2 border-indigo-500) "
+                {...props}
             >
                 {children}
-            </a>
+            </Link>
         </li>
     )
 }
